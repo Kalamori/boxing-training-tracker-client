@@ -1,10 +1,16 @@
 import './SignInForm.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import { signIn } from '../../services/users'
-import { setTokens } from '../../utils/auth'
+import { setTokens, getUser } from '../../utils/auth'
+import { UserContext } from '../../contexts/UserContext'
 
 export default function SignInForm() {
+    const { user, setUser } = useContext(UserContext)
+
+    console.log('UserState:', user)
+    
+
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -25,6 +31,8 @@ export default function SignInForm() {
             const { data } = await signIn(formData)
             console.log("Sign in response:", data)
             setTokens(data)
+            setUser(getUser())
+            console.log(getUser())
             navigate('/')
         } catch (error) {
             console.error('Sign in error:', error)

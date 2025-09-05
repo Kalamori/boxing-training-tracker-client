@@ -1,8 +1,9 @@
 import './SignUpForm.css'
 import { signUp } from '../../services/users'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
-import { setTokens } from '../../utils/auth'
+import { setTokens, getUser } from '../../utils/auth'
+import { UserContext } from '../../contexts/UserContext'
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,10 @@ export default function SignUpForm() {
     password: '',
     password_confirmation: ''
   })
+
+  const { user, setUser } = useContext(UserContext)
+  console.log('UserState:', user)
+
 
   const [errors, setErrors] = useState([])
 
@@ -29,6 +34,7 @@ export default function SignUpForm() {
       const { data } = await signUp(formData)
       console.log("Sign up response:", data)
       setTokens(data)
+      setUser(getUser())
       navigate('/')
       console.log(data)
     } catch (error) {

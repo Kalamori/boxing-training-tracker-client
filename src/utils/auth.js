@@ -28,3 +28,23 @@ export function clearTokens() {
   localStorage.removeItem(accessName)
   localStorage.removeItem(refreshName)
 }
+
+export const getUser = () => {
+  const token = getAccessToken()
+  if (!token) return null
+
+  try {
+    const payloadString = token.split('.')[1]
+    const payload = JSON.parse(atob(payloadString))
+    const { exp } = payload
+    if (Date.now() >= exp * 1000) {
+      clearTokens()
+      return null
+    }
+    const user = payload.user || { id: payload.user_id }
+    return user
+  } catch (error) {
+    console.error("Error decoding token:", error)
+    return null
+  }
+}
