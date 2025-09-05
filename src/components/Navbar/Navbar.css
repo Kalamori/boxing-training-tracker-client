@@ -1,57 +1,32 @@
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #111;
+  color: #ffd700;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: sticky;
-  top: 0;
+  padding: 0 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
   z-index: 1000;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #f2b632;
+  color: #ffd700;
 }
 
-.navbar {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.navbar a, .navbar span {
+.navbar a {
   color: #fff;
+  margin-left: 20px;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.3s;
 }
 
 .navbar a:hover {
-  color: #f2b632;
-}
-
-.navbar span {
-  margin-right: 1rem;
-  font-style: italic;
-}
-
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .navbar span {
-    margin-right: 0;
-  }
+  color: #ff0000;
 }
