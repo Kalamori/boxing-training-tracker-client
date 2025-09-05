@@ -1,6 +1,5 @@
 import './Home.css'
 import SignUpForm from '../../components/SignUpForm/SignupForm'
-
 import BoxingGloveImg from '/src/assets/boxing-gloves.jpg'
 
 export default function Home() {

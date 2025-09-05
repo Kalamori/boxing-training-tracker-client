@@ -9,6 +9,7 @@ import SignInPage from './pages/SignInPage/SignInPage'
 import Dashboard from './pages/Dashboard/Dashboard'
 import NewWorkoutPage from './pages/NewWorkout/NewWorkoutPage'
 import EditWorkoutPage from './pages/EditWorkout/EditWorkoutPage'
+import WorkoutDetailsPage from './pages/WorkoutDetails/WorkoutDetailsPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-workout" element={<NewWorkoutPage />} />
         <Route path="/edit-workout/:id" element={<EditWorkoutPage />} />
+        <Route path="/workouts/:id" element={<WorkoutDetailsPage />} />
       </Routes>
 
       <Footer />

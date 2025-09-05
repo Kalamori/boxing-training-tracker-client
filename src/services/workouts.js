@@ -14,3 +14,15 @@ export const createWorkout = async (workoutData) => {
   })
   return response.data
 }
+
+export const getWorkoutById = async (id) => {
+  const token = getAccessToken()
+  if (!token) throw new Error("User is not authenticated")
+
+  const response = await axios.get(`${BASE_URL}/workouts/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return response.data
+}

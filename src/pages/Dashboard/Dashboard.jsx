@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { getUserWorkouts, deleteWorkout } from '../../services/dashboardService'
+import { Link } from 'react-router'
 import './Dashboard.css'
 
 export default function Dashboard() {
@@ -55,7 +56,9 @@ export default function Dashboard() {
           .slice(0, 5)
           .map(workout => (
             <div key={workout.id} className="workout-card">
+              <Link to={`/workouts/${workout.id}`}>
               <h3>{workout.workout_type}</h3>
+              </Link>
               <p>Date: {new Date(workout.date).toLocaleDateString()}</p>
               <p>Duration: {workout.duration} min</p>
               <p>Rounds: {workout.rounds?.length || 0}</p>
