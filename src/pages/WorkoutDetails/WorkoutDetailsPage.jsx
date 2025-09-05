@@ -5,24 +5,22 @@ import './WorkoutDetailsPage.css'
 
 export default function WorkoutDetailsPage() {
   const { id } = useParams()
-  console.log(id)
-  
   const [workout, setWorkout] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
   useEffect(() => {
-    const fetchWorkout = async () => {
-      try {
-        const data = await getWorkoutById(id)
-        setWorkout(data)
-      } catch (err) {
-        console.error(err)
-        setError('Failed to load workout')
-      } finally {
-        setLoading(false)
-      }
+  const fetchWorkout = async () => {
+    try {
+      const data = await getWorkoutById(id)
+      setWorkout(data)
+    } catch (err) {
+      console.error("Error fetching workout:", err)
+      setError('Failed to load workout') 
+    } finally {
+      setLoading(false)
     }
+  }
 
     fetchWorkout();
   }, [id]);

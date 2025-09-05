@@ -32,13 +32,10 @@ export default function SignUpForm() {
     e.preventDefault()
     try {
       const { data } = await signUp(formData)
-      console.log("Sign up response:", data)
       setTokens(data)
       setUser(getUser())
       navigate('/')
-      console.log(data)
     } catch (error) {
-      console.error('Sign up error:', error)
       setErrors(error.response.data || ['An unexpected error occurred.'])
     }
   }

@@ -10,10 +10,8 @@ export function getRefreshToken() {
 }
 
 export function setTokens(tokens) {
-  if (!tokens) {
-    console.error("Invalid tokens passed to setTokens:", tokens)
-    return
-  }
+  if (!tokens) return
+  
 
   if (tokens.access) {
     localStorage.setItem(accessName, tokens.access)
@@ -44,7 +42,6 @@ export const getUser = () => {
     const user = payload.user || { id: payload.user_id }
     return user
   } catch (error) {
-    console.error("Error decoding token:", error)
-    return null
+    throw new Error('Invalid token' + error.message)
   }
 }

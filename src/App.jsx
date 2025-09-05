@@ -1,3 +1,6 @@
+import './styles/index.css'
+import './styles/forms.css'
+
 import { Routes, Route } from 'react-router'
 
 import Navbar from './components/Navbar/Navbar'
@@ -14,8 +17,9 @@ import WorkoutDetailsPage from './pages/WorkoutDetails/WorkoutDetailsPage'
 function App() {
   return (
     <>
+    <div className="app-container">
       <Navbar />
-
+      <main className="main-content">
       <Routes>
         <Route index element={<Home />} />
         <Route path="/sign-up" element={<SignUpPage />} />
@@ -25,8 +29,10 @@ function App() {
         <Route path="/edit-workout/:id" element={<EditWorkoutPage />} />
         <Route path="/workouts/:id" element={<WorkoutDetailsPage />} />
       </Routes>
+      </main>
 
       <Footer />
+      </div>
     </>
   )
 }

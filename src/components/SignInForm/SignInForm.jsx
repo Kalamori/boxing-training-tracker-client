@@ -29,13 +29,10 @@ export default function SignInForm() {
         e.preventDefault()
         try {
             const { data } = await signIn(formData)
-            console.log("Sign in response:", data)
             setTokens(data)
             setUser(getUser())
-            console.log(getUser())
             navigate('/')
         } catch (error) {
-            console.error('Sign in error:', error)
             setError(error.response.data)
         }
     }
