@@ -39,7 +39,7 @@ export const getUser = () => {
       clearTokens()
       return null
     }
-    const user = payload.user || { id: payload.user_id, username: 'User' }
+    const user = payload.user || { id: payload.user_id, username: '' }
     return user
   } catch (error) {
     throw new Error('Invalid token' + error.message)

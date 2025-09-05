@@ -16,9 +16,7 @@ export default function SignUpForm() {
     password_confirmation: ''
   })
 
-  const { user, setUser } = useContext(UserContext)
-  console.log('UserState:', user)
-
+  const { setUser } = useContext(UserContext)
 
   const [errors, setErrors] = useState([])
 
@@ -29,16 +27,35 @@ export default function SignUpForm() {
   const navigate = useNavigate()
   
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const { data } = await signUp(formData)
-      setTokens(data)
-      setUser(getUser())
-      navigate('/dashboard')
-    } catch (error) {
-      setErrors(error.response.data || ['An unexpected error occurred.'])
+  e.preventDefault()
+  try {
+    const { data } = await signUp(formData)
+    setTokens(data)
+    setUser(getUser())
+    navigate('/dashboard')
+
+  } catch (error) {
+    let errors = []
+
+    if (error.response) {
+      if (error.response.data?.errors) {
+        errors = error.response.data.errors
+      } 
+      else if (error.response.data?.message) {
+        errors = [error.response.data.message]
+      } 
+      else {
+        errors = [JSON.stringify(error.response.data)]
+      }
+    } 
+    else {
+      errors = ['Network error or server is unreachable.']
     }
+    
+    setErrors(errors)
+    console.error('Sign up error:', error)
   }
+}
 
   return (
     <>

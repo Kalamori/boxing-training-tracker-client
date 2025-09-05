@@ -6,9 +6,6 @@ const UserContext = createContext(null)
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(getUser())
 
-console.log(user)
-
-
     return (
         <UserContext.Provider value={{ user, setUser }}>
             {children}
