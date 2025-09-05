@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { getUserWorkouts, updateWorkout } from '../../services/dashboardService'
+import './EditWorkoutPage.css'
 
 export default function EditWorkoutPage() {
   const { id } = useParams()
@@ -47,7 +48,9 @@ export default function EditWorkoutPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="edit-workout-form" onSubmit={handleSubmit}>
+        <h2>Edit Workout</h2>
+        
       <label>
         Workout Type:
         <select name="workout_type" value={formData.workout_type} onChange={handleChange} required>

@@ -27,7 +27,7 @@ export default function SignInForm() {
             const { data } = await signIn(formData)
             setTokens(data)
             setUser(getUser())
-            navigate('/')
+            navigate('/dashboard')
         } catch (error) {
             setError(error.response.data)
         }

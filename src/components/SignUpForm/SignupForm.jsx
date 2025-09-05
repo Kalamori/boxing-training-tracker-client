@@ -34,7 +34,7 @@ export default function SignUpForm() {
       const { data } = await signUp(formData)
       setTokens(data)
       setUser(getUser())
-      navigate('/')
+      navigate('/dashboard')
     } catch (error) {
       setErrors(error.response.data || ['An unexpected error occurred.'])
     }
