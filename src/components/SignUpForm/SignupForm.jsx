@@ -1,6 +1,8 @@
 import './SignUpForm.css'
 import { signUp } from '../../services/users'
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { setTokens } from '../../utils/auth'
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -19,11 +21,16 @@ export default function SignUpForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const navigate = useNavigate()
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await signUp(formData)
-      console.log(res.data)
+      const { data } = await signUp(formData)
+      console.log("Sign up response:", data)
+      setTokens(data)
+      navigate('/')
+      console.log(data)
     } catch (error) {
       console.error('Sign up error:', error)
       setErrors(error.response.data || ['An unexpected error occurred.'])

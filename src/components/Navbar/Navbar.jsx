@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="logo">"Logo"</div>
     <nav className="navbar">
       <Link to="/sign-up">Sign Up</Link>
-      <Link to="/log-in">Log In</Link>
+      <Link to="/sign-in">Log In</Link>
     </nav>
     </header>
   )
