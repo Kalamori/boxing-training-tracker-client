@@ -7,10 +7,6 @@ import { UserContext } from '../../contexts/UserContext'
 
 export default function SignInForm() {
     const { user, setUser } = useContext(UserContext)
-
-    console.log('UserState:', user)
-    
-
     const [formData, setFormData] = useState({
         username: '',
         password: ''
